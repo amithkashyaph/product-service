@@ -16,5 +16,5 @@ public interface ProductService {
 
     String updateProduct(Long id);
 
-    String deleteProductById(Long id);
+    Product deleteProductById(Long id);
 }
