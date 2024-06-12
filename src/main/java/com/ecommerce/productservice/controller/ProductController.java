@@ -1,24 +1,33 @@
 package com.ecommerce.productservice.controller;
 
+import org.springframework.web.bind.annotation.*;
+
+@RequestMapping("/products")
+@RestController
 public class ProductController {
 
+    @GetMapping
     public String getAllProducts() {
         return "all products";
     }
 
-    public String getProductById(Long id) {
+    @GetMapping("/{id}")
+    public String getProductById(@PathVariable("id") Long id) {
         return "Product id : " + id;
     }
 
+    @PostMapping("/")
     public String addProduct() {
         return "adding product";
     }
 
-    public String updateProduct() {
-        return "updating product";
+    @PutMapping("/{id}")
+    public String updateProduct(@PathVariable("id") Long id) {
+        return "updating product : " + id;
     }
 
-    public String deleteProductById(Long id) {
+    @DeleteMapping("/{id}")
+    public String deleteProductById(@PathVariable("id") Long id) {
         return "deleting product : " + id;
     }
 }
