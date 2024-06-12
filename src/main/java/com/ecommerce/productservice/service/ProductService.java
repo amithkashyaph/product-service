@@ -12,7 +12,7 @@ public interface ProductService {
 
     Product getProductById(Long id) throws ProductNotFoundException;
 
-    String addProduct();
+    Product addProduct(Product product);
 
     String updateProduct(Long id);
 
