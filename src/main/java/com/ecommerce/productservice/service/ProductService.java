@@ -1,7 +1,8 @@
 package com.ecommerce.productservice.service;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductService {
 
     public String getAllProducts() {
