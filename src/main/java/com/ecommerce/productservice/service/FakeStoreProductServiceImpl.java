@@ -46,4 +46,30 @@ public class FakeStoreProductServiceImpl implements ProductService{
     public String deleteProductById(Long id) {
         return null;
     }
+
+    public Product getProductFromFakeProductDto(FakeProductDto fakeProductDto) {
+        Product product = new Product();
+        product.setTitle(fakeProductDto.getTitle());
+        product.setDescription(fakeProductDto.getDescription());
+        product.setId(fakeProductDto.getId());
+        product.setPrice(fakeProductDto.getPrice().longValue());
+
+        Category category = new Category();
+        category.setName(fakeProductDto.getCategory());
+        product.setCategory(category);
+
+        return product;
+
+    }
+
+    public FakeProductDto getFakeProductDtoFromProduct(Product product) {
+        FakeProductDto fakeProductDto = new FakeProductDto();
+        fakeProductDto.setId(product.getId());
+        fakeProductDto.setTitle(product.getTitle());
+        fakeProductDto.setDescription(product.getDescription());
+        fakeProductDto.setPrice(product.getPrice());
+        fakeProductDto.setCategory(product.getCategory().getName());
+
+        return fakeProductDto;
+    }
 }
