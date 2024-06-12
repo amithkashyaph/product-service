@@ -49,7 +49,7 @@ public class ProductController {
 
 
     @ExceptionHandler(ProductNotFoundException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ExceptionDto handleProductNotFoundException(ProductNotFoundException e) {
         ExceptionDto exceptionDto = new ExceptionDto();
         exceptionDto.setMesaage(e.getMessage());
