@@ -1,10 +1,12 @@
 package com.ecommerce.productservice.controller;
 
+import com.ecommerce.productservice.dtos.ExceptionDto;
 import com.ecommerce.productservice.entity.Product;
+import com.ecommerce.productservice.exception.ProductNotFoundException;
 import com.ecommerce.productservice.service.ProductService;
-import com.ecommerce.productservice.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable("id") Long id) {
+    public Product getProductById(@PathVariable("id") Long id) throws ProductNotFoundException {
         return productService.getProductById(id);
     }
 
@@ -43,5 +45,16 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public String deleteProductById(@PathVariable("id") Long id) {
         return productService.deleteProductById(id);
+    }
+
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ExceptionDto handleProductNotFoundException(ProductNotFoundException e) {
+        ExceptionDto exceptionDto = new ExceptionDto();
+        exceptionDto.setMesaage(e.getMessage());
+        exceptionDto.setStatus("Failure");
+
+        return exceptionDto;
     }
 }
