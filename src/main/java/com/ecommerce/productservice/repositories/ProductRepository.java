@@ -18,4 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllByPrice_ValueLessThan(Integer priceValue);
 
+    List<Product> findAllByPrice_ValueBetween(Integer basePrice, Integer maxPrice);
+
 }
