@@ -20,7 +20,7 @@ public class SearchService {
     }
 
     public List<GenericProductDto> getAllProductsBySearchTerm(String query) {
-        List<Product> productList = productRepository.findAllByTitle(query);
+        List<Product> productList = productRepository.findAllByTitleContaining(query);
 
         List<GenericProductDto> genericProductDtoList = new ArrayList<>();
         for(Product product: productList) {
