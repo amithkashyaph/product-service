@@ -16,4 +16,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllByTitleAndDescription(String title, String description);
 
+    List<Product> findAllByPrice_ValueLessThan(Integer priceValue);
+
 }
