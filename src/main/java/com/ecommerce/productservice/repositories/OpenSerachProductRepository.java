@@ -1,4 +1,10 @@
 package com.ecommerce.productservice.repositories;
 
-public interface OpenSerachProductRepository {
+import com.ecommerce.productservice.entity.Product;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface OpenSerachProductRepository extends ElasticsearchRepository<Product, Long> {
+
 }
