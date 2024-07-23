@@ -18,7 +18,7 @@ public class ProductController {
     private ProductService productService;
 
     @Autowired
-    public ProductController(@Qualifier("fakeStoreProductService") ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -33,8 +33,8 @@ public class ProductController {
     }
 
     @PostMapping("/")
-    public String addProduct() {
-        return productService.addProduct();
+    public Product addProduct(@RequestBody Product product) {
+        return productService.addProduct(product);
     }
 
     @PutMapping("/{id}")
@@ -43,18 +43,10 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteProductById(@PathVariable("id") Long id) {
+    public Product deleteProductById(@PathVariable("id") Long id) {
         return productService.deleteProductById(id);
     }
 
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ExceptionDto handleProductNotFoundException(ProductNotFoundException e) {
-        ExceptionDto exceptionDto = new ExceptionDto();
-        exceptionDto.setMesaage(e.getMessage());
-        exceptionDto.setStatus("Failure");
 
-        return exceptionDto;
-    }
 }
