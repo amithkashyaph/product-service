@@ -1,64 +1,35 @@
 package com.ecommerce.productservice;
 
-//import com.ecommerce.productservice.inheritancemapping.tableperclass.Mentor;
-//import com.ecommerce.productservice.inheritancemapping.tableperclass.Student;
-//import com.ecommerce.productservice.inheritancemapping.joinedtable.Mentor;
-//import com.ecommerce.productservice.inheritancemapping.tableperclass.User;
-//import com.ecommerce.productservice.inheritancemapping.tableperclass.repository.MentorRepository;
-//import com.ecommerce.productservice.inheritancemapping.tableperclass.repository.StudentRepository;
-//import com.ecommerce.productservice.inheritancemapping.tableperclass.repository.UserRepository;
-//import com.ecommerce.productservice.inheritancemapping.joinedtable.Student;
-//import com.ecommerce.productservice.inheritancemapping.joinedtable.User;
-//import com.ecommerce.productservice.inheritancemapping.joinedtable.repository.MentorRepository;
-//import com.ecommerce.productservice.inheritancemapping.joinedtable.repository.StudentRepository;
-//import com.ecommerce.productservice.inheritancemapping.joinedtable.repository.UserRepository;
-import com.ecommerce.productservice.entity.Category;
-import com.ecommerce.productservice.entity.Price;
-import com.ecommerce.productservice.entity.Product;
-import com.ecommerce.productservice.inheritancemapping.singletable.Mentor;
-import com.ecommerce.productservice.inheritancemapping.singletable.Student;
-import com.ecommerce.productservice.inheritancemapping.singletable.User;
-import com.ecommerce.productservice.inheritancemapping.singletable.repository.MentorRepository;
-import com.ecommerce.productservice.inheritancemapping.singletable.repository.StudentRepository;
-import com.ecommerce.productservice.inheritancemapping.singletable.repository.UserRepository;
-import com.ecommerce.productservice.repositories.CategoryRepository;
-import com.ecommerce.productservice.repositories.PriceRepository;
-import com.ecommerce.productservice.repositories.ProductRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-@AllArgsConstructor
+@EnableDiscoveryClient
 public class ProductServiceApplication implements CommandLineRunner {
 
-	@Qualifier("joinedMentorRepository")
-	private MentorRepository mentorRepository;
-
-	@Qualifier("joinedStudentRepository")
-	private StudentRepository studentRepository;
-
-	@Qualifier("joinedUserRepository")
-	private UserRepository userRepository;
-
-	private PriceRepository priceRepository;
-
-	private CategoryRepository categoryRepository;
-
-	private ProductRepository productRepository;
-
-	@Autowired
-	public ProductServiceApplication(ProductRepository productRepository, PriceRepository priceRepository, CategoryRepository categoryRepository) {
-		this.productRepository = productRepository;
-		this.categoryRepository = categoryRepository;
-		this.priceRepository = priceRepository;
-	}
+//	@Qualifier("joinedMentorRepository")
+//	private MentorRepository mentorRepository;
+//
+//	@Qualifier("joinedStudentRepository")
+//	private StudentRepository studentRepository;
+//
+//	@Qualifier("joinedUserRepository")
+//	private UserRepository userRepository;
+//
+//	private PriceRepository priceRepository;
+//
+//	private CategoryRepository categoryRepository;
+//
+//	private ProductRepository productRepository;
+//
+//	@Autowired
+//	public ProductServiceApplication(ProductRepository productRepository, PriceRepository priceRepository, CategoryRepository categoryRepository) {
+//		this.productRepository = productRepository;
+//		this.categoryRepository = categoryRepository;
+//		this.priceRepository = priceRepository;
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProductServiceApplication.class, args);
