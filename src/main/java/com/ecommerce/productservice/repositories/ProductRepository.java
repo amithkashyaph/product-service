@@ -1,6 +1,7 @@
 package com.ecommerce.productservice.repositories;
 
 import com.ecommerce.productservice.entity.Product;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +15,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllByTitle(String title);
 
-    List<Product> findAllByTitleContaining(String title);
+    List<Product> findAllByTitleContaining(String title, Pageable pageable);
 
 
     List<Product> findAllByTitleAndDescription(String title, String description);
