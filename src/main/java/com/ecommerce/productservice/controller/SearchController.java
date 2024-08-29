@@ -4,6 +4,8 @@ import com.ecommerce.productservice.dtos.GenericProductDto;
 import com.ecommerce.productservice.dtos.SearchRequestDto;
 import com.ecommerce.productservice.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +24,15 @@ public class SearchController {
         this.searchService = searchService;
     }
 
-    @PostMapping
-    public List<GenericProductDto> getAllProductsForSearchTerm(@RequestBody SearchRequestDto searchRequestDto) {
+    @PostMapping("/list")
+    public List<GenericProductDto> getAllProductsListForSearchTerm(@RequestBody SearchRequestDto searchRequestDto) {
         return searchService.getAllProductsBySearchTerm(searchRequestDto.getQuery(), searchRequestDto.getPageNumber(), searchRequestDto.getPageSize(), searchRequestDto.getSortParamsList());
+    }
+
+    @PostMapping("/page")
+    public Page<GenericProductDto> getAllProductsPageForSearchTerm(@RequestBody SearchRequestDto searchRequestDto) {
+        List<GenericProductDto> genericProductDtoList = searchService.getAllProductsBySearchTerm(searchRequestDto.getQuery(), searchRequestDto.getPageNumber(), searchRequestDto.getPageSize(), searchRequestDto.getSortParamsList());
+        Page<GenericProductDto> genericProductDtoPage = new PageImpl<>(genericProductDtoList);
+        return genericProductDtoPage;
     }
 }
